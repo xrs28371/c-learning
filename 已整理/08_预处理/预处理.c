@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include<ctype.h>
 #include<string.h>
@@ -211,3 +211,25 @@ msdos_version_option2();
 #endif
 #endif
 */
+
+//可以使用 #if 0   #endif  达到类似注释效果
+
+//头文件
+//头文件被包含的方式
+//#include "filename." 这种双引号
+//先在源文件所在目录下查找，如果该头文件未找到，编译器就像查找库函数头文件一样在标准位置查找头文件。
+//如果找不到就提示编译错误
+
+//#pragma once  防止头文件的多次引用
+#ifndef  TEST_H  //TEST_H 可以随意更改
+#define TEST_H_
+//头文件的内容
+#endif // TEST_H
+
+//头文件中的ifndef/define/endif是干什么用的
+/*
+#ifndef (if not defined)：检查后面的宏是否未被定义。如果未定义，则编译后面的代码直到遇到 #endif。
+
+#define：定义一个宏。通常在 #ifndef 检查通过后立即定义这个宏，以此标记该头文件已被包含。
+
+#endif：结束条件编译块。*/
