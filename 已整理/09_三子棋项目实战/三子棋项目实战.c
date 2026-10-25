@@ -15,5 +15,8 @@ int main()
 	char board[ROW][COL];
 	//定义棋盘
 
-	void init_board(board,ROW,COL);
+	init_board(board,ROW,COL);
+	//初始化一个空棋盘
+
+	print_init_board(board, ROW, COL);
 }
