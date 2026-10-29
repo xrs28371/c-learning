@@ -170,31 +170,71 @@ void SLDestroy(SL* ps)
 完成后先给我看第一题，我会先指出最需要改的一两处，不直接给整份答案。
 */
 
+//头插
 void SLPushFront(SL* ps, SLDataType x)
 {
-    /* TODO：自己实现扩容检查、移动、写入和计数更新。 */
-    (void)ps;
-    (void)x;
+    SLCheckCapacity(ps);
+    for(int i=ps->size;i>0;i--)
+    {
+        ps->arr[i] = ps->arr[i - 1];
+    }
+    ps->arr[0] = x;
+    ps->size++;
 }
 
+
+//尾删
 void SLPopBack(SL* ps)
 {
-    /* TODO：先确定前提，再想清楚“删除”的有效范围变化。 */
-    (void)ps;
+    assert(ps);
+    assert(ps->size);
+    ps->arr[ps->size - 1] = -1;
+    ps->size--;
+    
 }
 
+
+//头删
 void SLPopFront(SL* ps)
 {
-    /* TODO：自己推导移动方向、下标边界和 size 的变化。 */
-    (void)ps;
+    assert(ps);
+    assert(ps->size);
+    for (int i = 0; i < ps->size-1;i++)
+    {
+        ps->arr[i] = ps->arr[i + 1];
+    }
+    ps->size--;
 }
+    
+    
 
-int main(void)
+int main()
 {
-    puts("2026-10-28：顺序表独立编写练习，两题均未提供实现。");
-    puts("先完成第一题，并在 main 中自己写调用；检查后再做第二题。");
+    SL s1;
+    SLInit(&s1);
+    SLPushBack(&s1, 10);
+    SLPushBack(&s1, 20);
+    SLPushBack(&s1, 30);
+    SLPushFront(&s1, -1);
+    SLPushFront(&s1, 0);
+    SLPrint(s1);
+   
+    SLPopBack(&s1);
+    SLPrint(s1);
+    
+    SLPopFront(&s1);
+    SLPrint(s1);
+   
+    SLPopBack(&s1);
+    SLPopBack(&s1);
+    SLPrint(s1);
 
-    /* TODO：自己声明顺序表、传参、调用函数、打印状态并核对题目要求。 */
+    SLDestroy(&s1);
+
+
+
+
+
 
     return 0;
 }
