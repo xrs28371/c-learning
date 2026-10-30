@@ -35,6 +35,9 @@ void SLPushFront(SL* ps, SLDataType x);
 void SLPopBack(SL* ps);
 void SLPopFront(SL* ps);
 
-
+//指定位置之前插入/删除数据
+void SLInsert(SL* ps, int pos, SLDataType x);
+void SLErase(SL* ps, int pos);
+int SLFind(SL* ps, SLDataType x);
 
 
