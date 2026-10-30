@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include<ctype.h>
 #include<string.h>
@@ -78,6 +78,15 @@ void SLTest02()
 	SLprint(s2);
 
 
+	//查找
+	int find = SLFind(&s2, 4);
+	if (find > 0)
+	{
+		printf("找到了\n");
+	}
+	printf("没有找到\n");
+
+
 	SLDestory(&s2);
 
 
@@ -90,4 +99,6 @@ int main()
 	SLTest02();
 	return 0;
 }
+
+
 
