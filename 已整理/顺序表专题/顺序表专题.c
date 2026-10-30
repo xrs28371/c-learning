@@ -49,9 +49,45 @@ void SLTest01()
 	//使用完销毁
 	SLDestory(&s1);
 }
-int main()
+int main1()
 {
 	 SLTest01();
 	
 	return 0;
 }
+void SLTest02()
+{
+	SL s2;
+	SLInit(&s2);
+	SLPushBack(&s2, 1);
+	SLPushBack(&s2, 1);
+	SLPushBack(&s2, 1);
+	SLPushBack(&s2, 1);
+	SLPushBack(&s2, 1);
+	SLprint(s2);
+
+	//测试
+	SLInsert(&s2, 0, 99);
+	SLprint(s2);
+
+	SLInsert(&s2, s2.size, 99);
+	SLprint(s2);
+
+
+	SLErase(&s2, 0);
+	SLprint(s2);
+
+
+	SLDestory(&s2);
+
+
+
+
+	
+ }
+int main()
+{
+	SLTest02();
+	return 0;
+}
+
