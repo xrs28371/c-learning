@@ -3,6 +3,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<assert.h>
+#include"contact.h"
 //静态顺序表的定义
 struct SeqList
 {
@@ -11,7 +12,7 @@ struct SeqList
 };
 
 
-typedef int SLDataType;
+typedef peoInfo SLDataType;
 
 //动态顺序表
 struct Seqlist
