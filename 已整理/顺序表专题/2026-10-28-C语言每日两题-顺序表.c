@@ -77,7 +77,6 @@ void SLInit(SL* ps)
 {
     ps->arr = NULL;
     ps->size = ps->capacity = 0;
-   
 }
 //是否为空 不为空怎么办
 void SLCheckCapacity(SL* ps)
@@ -123,7 +122,6 @@ void SLPrint(SL s)
         printf("%d ", s.arr[i]);
     }
     printf("\n");//可有可无
-   
 }
 
 //销毁顺序表
@@ -190,7 +188,6 @@ void SLPopBack(SL* ps)
     assert(ps->size);
     ps->arr[ps->size - 1] = -1;
     ps->size--;
-    
 }
 
 
@@ -205,8 +202,8 @@ void SLPopFront(SL* ps)
     }
     ps->size--;
 }
-    
-    
+
+
 
 int main()
 {
@@ -218,13 +215,10 @@ int main()
     SLPushFront(&s1, -1);
     SLPushFront(&s1, 0);
     SLPrint(s1);
-   
     SLPopBack(&s1);
     SLPrint(s1);
-    
     SLPopFront(&s1);
     SLPrint(s1);
-   
     SLPopBack(&s1);
     SLPopBack(&s1);
     SLPrint(s1);
