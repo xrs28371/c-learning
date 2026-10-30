@@ -106,5 +106,45 @@ void SLPopFront(SL* ps)
 	{
 		ps->arr[i] = ps->arr[i + 1];
 	}
-	--ps->size;
+	--ps->size;		
+}
+
+
+//指定位置之前插入数据
+// pos必须是大于等于0 小于size
+void SLInsert(SL* ps, int pos, SLDataType x)
+//  顺序表  位置  插入的数据
+{
+	assert(ps);
+	assert(pos >= 0 && pos <= ps->size);
+	SLCheckCapacity(ps);
+	for (int i = ps->size;i > pos;i--)
+	{
+		ps->arr[i] = ps->arr[i - 1];//arr[pos+1]=arr[pos]
+	}
+	ps->arr[pos] = x;
+	ps->size++;
+
+}
+
+
+//删除指定位置的数据
+void SLErase(SL* ps, int pos)
+{
+	assert(ps);
+	assert(pos >= 0 && pos < ps->size);
+	for (int i = pos;i<ps->size-1;i++)
+	{
+		ps->arr[i] = ps->arr[i + 1];
+	}
+	ps->size--;
+}
+
+
+
+
+
+int SLFind(SL* ps, SLDataType x)
+{
+
 }
