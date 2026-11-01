@@ -74,7 +74,7 @@ void SLPushFront(SL* ps, SLDataType x)
 }
 
 //打印顺序表
-void SLprint(SL s)
+/*void SLprint(SL s)
 {
 	for (int i = 0;i < s.size;i++)
 	{
@@ -82,10 +82,11 @@ void SLprint(SL s)
 	}
 	printf("\n");
 }
+*/
 
 
 //尾删  size--
-void SLPopBack(SL* ps)
+/*void SLPopBack(SL* ps)
 {
 	assert(ps);
 	assert(ps->size);
@@ -93,6 +94,7 @@ void SLPopBack(SL* ps)
 	ps->arr[ps->size - 1] = -1;
 	--ps->size;
 }
+*/
 
 
 //头删
@@ -144,17 +146,18 @@ void SLErase(SL* ps, int pos)
 
 
 //顺序表的查找
-int SLFind(SL* ps, SLDataType x)
+/*
+int SLFind(SL*ps,SLDataType x)
 {
-	assert(ps);
-	for (int i = 0;i < ps->size;i++)
-	{
-		if (ps->arr[i] == x)
-		{
-			return i;
-		}
-		
-	}
-	return-1;
-
-}
+     assert(ps);
+	 for (int i=0;i<ps->size;i++)
+	 {
+	      if(ps->arr[i] == x)
+		  {
+		      // 找到啦
+			  return i;
+		   }
+	  }
+	  //没有找到
+	  return -1;
+*/

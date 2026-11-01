@@ -1,4 +1,5 @@
 #pragma once
+
 //定义联系人数据结构
 //姓名
 //性别
@@ -21,10 +22,15 @@ typedef struct personInfo
 	
 }peoInfo;
 
+
+
+//要用到顺序表相关的方法，对通讯录的操作实际时对顺序表进行操作
+//给顺序表改名字，叫做通讯录
+typedef struct SeqList Contact;
 //通讯录相关的方法
 
 //初始化
-void ContactInit(SL* s1);
+void ContactInit(Contact* s1);
 //销毁
 //添加
 //删除

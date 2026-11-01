@@ -25,7 +25,7 @@
 //物理结构是连续的
 //逻辑结构是连续的
 
-void SLTest01()
+/*void SLTest01()
 {
 	SL s1;
 	SLInit(&s1);
@@ -94,6 +94,7 @@ void SLTest02()
 
 	
  }
+ */
 int main()
 {
 	SLTest02();
