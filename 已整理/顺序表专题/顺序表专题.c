@@ -95,9 +95,20 @@ void SLTest02()
 	
  }
  */
+//通讯录的测试方法
+void ContactTest01()
+{
+	Contact con;//    等价于 SL  s1
+	ContactInit(&con);
+}
+
+
+
 int main()
 {
-	SLTest02();
+	
+	//SLTest02();
+	ContactTest01();
 	return 0;
 }
 

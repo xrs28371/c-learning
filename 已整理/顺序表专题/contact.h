@@ -30,7 +30,16 @@ typedef struct SeqList Contact;
 //通讯录相关的方法
 
 //初始化
-void ContactInit(Contact* s1);
+void ContactInit(Contact* con);
 //销毁
+void ContactDesTroy(Contact* con);
 //添加
+ void ContactAdd(Contact*con);
 //删除
+ void ContactDel(Contact* con);
+ //修改
+ void ContactModify(Contact* con);
+ //查找
+ void ContactFind(Contact* con);
+ //展示
+ void ContactShow(Contact* con);
