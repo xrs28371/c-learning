@@ -100,6 +100,7 @@ void ContactTest01()
 {
 	Contact con;//    等价于 SL  s1
 	ContactInit(&con);
+	ContactDesTroy(&con);
 }
 
 
