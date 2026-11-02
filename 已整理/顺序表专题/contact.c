@@ -26,7 +26,7 @@ void ContactAdd(Contact* con)
 	scanf("%s", info.gender);
 
 	printf("请输入要添加的联系人年龄：\n");
-	scanf("%d", info.age);
+	scanf("%d", &info.age);
 
 	printf("请输入要添加的联系人电话：\n");
 	scanf("%s", info.tel);

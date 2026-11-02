@@ -26,7 +26,7 @@ typedef struct personInfo
 
 //要用到顺序表相关的方法，对通讯录的操作实际时对顺序表进行操作
 //给顺序表改名字，叫做通讯录
-typedef struct SeqList Contact;
+typedef struct Seqlist Contact;
 //通讯录相关的方法
 
 //初始化
