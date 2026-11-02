@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #define N 100
 #include<stdio.h>
@@ -28,7 +28,7 @@ typedef struct Seqlist SL;
 //初始化
 void SLInit(SL * ps);
 //顺序表的销毁
-void SLDestory(SL* ps);
+void SLDestroy(SL* ps);
 
 //头部插入删除/ 尾部插入删除
 void SLPushBack(SL* ps, SLDataType x);//顺序表 数据类型

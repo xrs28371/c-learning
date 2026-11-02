@@ -1,4 +1,4 @@
-#include"test.h"
+﻿#include"test.h"
 
 
 
@@ -13,7 +13,7 @@ void SLInit(SL* ps)
 
 
 //顺序表的销毁
-void SLDestory(SL* ps)
+void SLDestroy(SL* ps)
 {
 	if (ps->arr)
 	{
