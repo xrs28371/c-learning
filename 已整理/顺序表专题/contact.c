@@ -79,11 +79,50 @@ void ContactDel(Contact* con)
 //展示
 void ContactShow(Contact* con)
 {
-
+	//表头：姓名 性别 年龄电话地址
+	printf("%s %s %s %s %s\n", "姓名", "性别", "年龄", "电话", "地址");
+	//遍历通讯录
+	for (int i = 0;i < con->size;i++)
+	{
+		printf("%3s %3s %3d %3s %3s\n",//手动调整格式
+			con->arr[i].name,
+			con->arr[i].gender,
+			con->arr[i].age,
+			con->arr[i].tel,
+			con->arr[i].addr);
+	}
 }
 //修改
 void ContactModify(Contact* con)
 {
+	//要修改的联系人数据存在
+	char name[NAME_MAX];
+	printf("请输入要修改的用户姓名：\n");
+	scanf("%s", name);
+	int find = FindByName(con, name);
+	if (find < 0)
+	{
+		printf("要修改的联系人数据不存在！\n");
+		return;
+	}
+
+	//直接修改
+	printf("请输入新的姓名：\n");
+	scanf("%s", con->arr[find].name);
+
+	printf("请输入新的性别：\n");
+	scanf("%s", con->arr[find].gender);
+
+	printf("请输入新的年龄：\n");
+	scanf("%s", con->arr[find].age);
+
+	printf("请输入新的电话：\n");
+	scanf("%s", con->arr[find].tel);
+
+	printf("请输入新的地址：\n");
+	scanf("%s", con->arr[find].addr);
+
+	printf("修改成功！\n");
 
 }
 
