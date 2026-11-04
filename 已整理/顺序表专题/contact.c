@@ -43,7 +43,7 @@ int FindByName(Contact* con, char name[])
 {
 	for (int i = 0;i < con->size;i++)
 	{
-		if (0==strcmp(con->arr[i].name))
+		if (0==strcmp(con->arr[i].name,name))
 		{
 			//找到了
 			return i;
@@ -129,5 +129,25 @@ void ContactModify(Contact* con)
 //查找
 void ContactFind(Contact* con)
 {
+	char name[NAME_MAX];
+	printf("请输入你要查找的联系人姓名\n");
+	scanf("%s", name);
+	int find = FindByName(con, name);
+	if (find < 0)
+	{
+		printf("要修改的联系人数据不存在！\n");
+		return;
+	}
+	printf("%s %s %s %s %s\n", "姓名", "性别", "年龄", "电话", "地址");
+	//遍历通讯录
+	for (int i = 0;i < con->size;i++)
+	{
+		printf("%3s %3s %3d %3s %3s\n",//手动调整格式
+			con->arr[find].name,
+			con->arr[find].gender,
+			con->arr[find].age,
+			con->arr[find].tel,
+			con->arr[find].addr);
+	}
 
 }
