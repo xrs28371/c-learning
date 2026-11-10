@@ -2,25 +2,6 @@
 
 /* TODO：实现底层顺序表操作；这里不提供算法或参考答案。 */
 
-#define NAME_MAX 39
-#define CATEGRORY 19
-typedef struct a
-{
-    int id;
-    char name[NAME_MAX];
-    char category[CATEGRORY];
-    int total;
-    int borrowed;
-
-
-}Equipment;// 这里是静态顺序表 存放每个器材 的结构体
-
-typedef struct b {
-    Equipment* arr;
-    int size;
-    int capacity;
-}B;//  这里是动态顺序表  
-
 //初始化
 void Binit(B* ps)
 {
