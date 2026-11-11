@@ -26,7 +26,28 @@ void EquipmentAdd(B* ps)
 		return;
 	}
 	printf("请输入名称");
-	scanf("%c", &tmp.name);
+	scanf("%39s", &tmp.name);
+	printf("请输入分类");
+	scanf("%19s", &tmp.category);
+	printf("请输入总数量");
+	if (scanf("%d", &tmp.total) != 1)
+	{
+		printf("总数量输入失败\n");
+		return;
+	}
+	printf("请输入总数量");
+	if (scanf("%d", &tmp.borrowed) != 1)
+	{
+		printf("总借出输入失败\n");
+		return;
+	}
+	
 
+
+
+}
+
+void EquipmentInsert(B* ps) 
+{
 
 }
