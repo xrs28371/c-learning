@@ -1,7 +1,7 @@
-﻿
+﻿#ifndef EQUIPMENT_SEQLIST_H
 #define EQUIPMENT_SEQLIST_H
-#define NAME_MAX 39
-#define CATEGRORY 19
+#define NAME_MAX 40
+#define CATEGRORY 20
 
 #include <stdlib.h>
 #include <assert.h>
@@ -40,3 +40,5 @@ void BPopBack(B* ps);
 void BErase(B* ps, int x);
 void BInsert(B* ps, int x, Equipment y);
 
+
+#endif
