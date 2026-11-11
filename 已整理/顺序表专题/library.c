@@ -41,13 +41,17 @@ void EquipmentAdd(B* ps)
 		printf("总借出输入失败\n");
 		return;
 	}
-	
+	int x = 0;
+	printf("请输入插入位置");
+	scanf("%d", &x);
+	if (x<0 && x>ps->size)
+	{
+		printf("无效位置");
+		return;
+	}
+	BInsert(ps, x, tmp);
 
 
 
 }
 
-void EquipmentInsert(B* ps) 
-{
-
-}
