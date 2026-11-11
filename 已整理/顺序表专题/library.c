@@ -16,3 +16,17 @@
 int x = 0;
 Equipment tmp = { 0 };
 
+void EquipmentAdd(B* ps)
+{
+	Equipment tmp = { 0 };
+	printf("请输入编号");
+	if (scanf("%d", &tmp.id) != 1)
+	{
+		printf("编号输入失败\n");
+		return;
+	}
+	printf("请输入名称");
+	scanf("%c", &tmp.name);
+
+
+}
