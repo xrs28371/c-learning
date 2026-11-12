@@ -12,5 +12,8 @@
 
 
 
-#endif
+void EquipmentDelete(B* ps, int x);
+void EqiupmentShow(B* ps);
 void EquipmentAdd(B* ps);
+int EquipmentFind(B* ps, int id);
+#endif

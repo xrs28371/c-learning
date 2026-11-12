@@ -67,8 +67,14 @@ void EquipmentDelete(B* ps,int x)
 		printf("输入错误");
 		return;
 	}
-
+	int pos=EquipmentFind(ps, x);
+	if (pos == -1)
+	{
+		printf("无法删除");
+		return;
+	}
 	BErase(ps, x);
+
 }
 
 
@@ -98,9 +104,29 @@ int EquipmentFind(B* ps, int id)
 	{
 		if (ps->arr[i].id == id)
 		{
-			return id;
+			return i;
 		}
 		
 	}
 	return -1;
+}
+
+
+//5. 展示：按当前顺序显示全部器材，包含可借数量；空表要有提示。
+void EqiupmentShow(B* ps)
+{
+	if (ps->size == 0)
+	{
+		printf("此时为空");
+		return;
+	}
+	for (int i = 0;i < ps->size;i++)
+	{
+		printf("编号：%d 名称：%s 分类：%s 总数量：%d 已借出：%d\n",
+			ps->arr[i].id,
+			ps->arr[i].name,
+			ps->arr[i].category,
+			ps->arr[i].total,
+			ps->arr[i].borrowed);
+	}
 }
