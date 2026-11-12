@@ -130,3 +130,49 @@ void EqiupmentShow(B* ps)
 			ps->arr[i].borrowed);
 	}
 }
+
+//6. 借出：输入编号与借出数量。数量必须是正整数且不能超过可借数量。
+void EqiupmentBorrowed(B* ps, int id, int x)
+{
+	printf("请输入编号");
+	scanf("%d", &id);
+	int pos=EquipmentFind(ps, id);
+	if (pos == -1)
+	{
+		printf("输入的编号不存在");
+		return;
+	}
+	printf("请输入借出的数量");
+	scanf("%d", &x);
+	if (x < 0)
+	{
+		printf("输入错误");
+		return 0;
+	}
+	ps->arr[id].borrowed += x;
+	printf("此时借出的数量为%d", ps->arr[id].borrowed);
+
+}
+
+
+//7. 归还：输入编号与归还数量。数量必须是正整数且不能超过已借出数量。
+void EquipmentReturn(B* ps, int id, int x)
+{
+	printf("请输入编号");
+	scanf("%d", &id);
+	int pos = EquipmentFind(ps, id);
+	if (pos == -1)
+	{
+		printf("输入的编号不存在");
+		return;
+	}
+	printf("请输入归还的数量");
+	scanf("%d", &x);
+	if (x < 0&&x>ps->arr[id].borrowed)
+	{
+		printf("输入错误");
+		return 0;
+	}
+	ps->arr[id].borrowed -= x;
+	printf("已经归还%d本", x);
+}
