@@ -82,17 +82,44 @@ void EquipmentDelete(B* ps,int x)
 //新总数量不能小于当前已借出数量；失败不能破坏原记录。
 void EqiupmentRevise(B* ps, int x)
 {
-	printf("请输入编号");
-	scanf("%d", &x);
-	if (x<0 && x>ps->size)
+	assert(ps);
+
+	printf("请输入要修改的器材编号：\n");
+	if (scanf("%d", &x) != 1)
 	{
-		printf("输入错误");
+		printf("编号输入失败\n");
 		return;
 	}
-	
-	
 
+	int pos = EquipmentFind(ps, x);
+	if (pos == -1)
+	{
+		printf("没有找到该器材\n");
+		return;
+	}
+
+	// 复制原记录，保留编号和已借出数量
+	Equipment temp = ps->arr[pos];
+
+	printf("请依次输入新名称、新分类、新总数量：\n");
+	if (scanf("%39s %19s %d",
+		temp.name, temp.category, &temp.total) != 3)
+	{
+		printf("修改信息输入失败\n");
+		return;
+	}
+
+	if (temp.total < temp.borrowed)
+	{
+		printf("总数量不能小于已借出数量\n");
+		return;
+	}
+
+	// 全部检查通过，再修改顺序表中的记录
+	ps->arr[pos] = temp;
+	printf("修改成功\n");
 }
+
 
 
 //4. 查找：按编号查找。找到只显示匹配的一条，不存在要有明确提示。
@@ -179,7 +206,40 @@ void EquipmentReturn(B* ps, int id, int x)
 
 
 //8. 统计：显示器材种类数、器材总件数、已借出总件数、可借总件数。
-void EquipmentAll(B* ps)
+void EquipmentStatistics(B* ps)
 {
+	assert(ps);
+
+	long long totalCount = 0;
+	long long borrowedCount = 0;
+
+	for (int i = 0; i < ps->size; i++)
+	{
+		totalCount += ps->arr[i].total;
+		borrowedCount += ps->arr[i].borrowed;
+	}
+
+	printf("器材种类数：%d\n", ps->size);
+	printf("器材总件数：%lld\n", totalCount);
+	printf("已借出总件数：%lld\n", borrowedCount);
+	printf("可借总件数：%lld\n", totalCount - borrowedCount);
+}
+
+
+
+//退出
+void EquipmentExit(B* ps, int x)
+{
+	printf("请输入0退出\n");
+	scanf("%d", x);
+	if (x != 0)
+	{
+		printf("输入错误，请重新输入\n");
+		return;
+	}
+	printf("正在退出\n");
+	time(1000);
+	Bdestory(ps);
 
 }
+
