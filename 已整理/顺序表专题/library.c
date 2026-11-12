@@ -56,6 +56,7 @@ void EquipmentAdd(B* ps)
 }
 
 
+
 //删除：按编号删除。不存在时提示；仍有器材借出时拒绝删除。
 void EquipmentDelete(B* ps,int x) 
 {
@@ -66,6 +67,7 @@ void EquipmentDelete(B* ps,int x)
 		printf("输入错误");
 		return;
 	}
+
 	BErase(ps, x);
 }
 
@@ -74,15 +76,15 @@ void EquipmentDelete(B* ps,int x)
 //新总数量不能小于当前已借出数量；失败不能破坏原记录。
 void EqiupmentRevise(B* ps, int x)
 {
-	printf("请输入要修改的代码");
+	printf("请输入编号");
 	scanf("%d", &x);
 	if (x<0 && x>ps->size)
 	{
 		printf("输入错误");
 		return;
 	}
-	printf("请输入要修改的名称");
-	scanf()
+	
+	
 
 }
 
@@ -90,7 +92,15 @@ void EqiupmentRevise(B* ps, int x)
 //4. 查找：按编号查找。找到只显示匹配的一条，不存在要有明确提示。
 //业务函数可共用一个查找接口：返回匹配下标，不存在返回 - 1。
 
-void EquipmentFind(B* ps, int x)
+int EquipmentFind(B* ps, int id)
 {
-
+	for (int i = 0;i < ps->size;i++)
+	{
+		if (ps->arr[i].id == id)
+		{
+			return id;
+		}
+		
+	}
+	return -1;
 }
