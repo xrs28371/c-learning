@@ -55,3 +55,24 @@ void EquipmentAdd(B* ps)
 
 }
 
+
+//删除：按编号删除。不存在时提示；仍有器材借出时拒绝删除。
+void EquipmentDelete(B* ps,int x) 
+{
+	printf("请输入删除的编号");
+	scanf("%d", &x);
+	if (x<0 && x>ps->size)
+	{
+		printf("输入错误");
+		return;
+	}
+	BErase(ps, x);
+}
+
+
+//修改：按编号修改名称、分类和总数量。编号保持不变。
+//新总数量不能小于当前已借出数量；失败不能破坏原记录。
+void EqiupmentRevise(B* ps, int x)
+{
+
+}
