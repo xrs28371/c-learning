@@ -74,5 +74,23 @@ void EquipmentDelete(B* ps,int x)
 //新总数量不能小于当前已借出数量；失败不能破坏原记录。
 void EqiupmentRevise(B* ps, int x)
 {
+	printf("请输入要修改的代码");
+	scanf("%d", &x);
+	if (x<0 && x>ps->size)
+	{
+		printf("输入错误");
+		return;
+	}
+	printf("请输入要修改的名称");
+	scanf()
+
+}
+
+
+//4. 查找：按编号查找。找到只显示匹配的一条，不存在要有明确提示。
+//业务函数可共用一个查找接口：返回匹配下标，不存在返回 - 1。
+
+void EquipmentFind(B* ps, int x)
+{
 
 }
