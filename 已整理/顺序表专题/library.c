@@ -73,7 +73,7 @@ void EquipmentDelete(B* ps,int x)
 		printf("无法删除");
 		return;
 	}
-	BErase(ps, x);
+	BErase(pos, x);
 
 }
 
@@ -147,10 +147,10 @@ void EqiupmentBorrowed(B* ps, int id, int x)
 	if (x < 0)
 	{
 		printf("输入错误");
-		return 0;
+		return ;
 	}
-	ps->arr[id].borrowed += x;
-	printf("此时借出的数量为%d", ps->arr[id].borrowed);
+	ps->arr[pos].borrowed += x;
+	printf("此时借出的数量为%d", ps->arr[pos].borrowed);
 
 }
 
@@ -168,11 +168,18 @@ void EquipmentReturn(B* ps, int id, int x)
 	}
 	printf("请输入归还的数量");
 	scanf("%d", &x);
-	if (x < 0&&x>ps->arr[id].borrowed)
+	if (x < 0&&x>ps->arr[pos].borrowed)
 	{
 		printf("输入错误");
-		return 0;
+		return ;
 	}
-	ps->arr[id].borrowed -= x;
+	ps->arr[pos].borrowed -= x;
 	printf("已经归还%d本", x);
+}
+
+
+//8. 统计：显示器材种类数、器材总件数、已借出总件数、可借总件数。
+void EquipmentAll(B* ps)
+{
+
 }
