@@ -73,7 +73,12 @@ void EquipmentDelete(B* ps,int x)
 		printf("无法删除");
 		return;
 	}
-	BErase(pos, x);
+	if (ps->arr[pos].borrowed != 0)
+	{
+		printf("无法删除");
+		return;
+	}
+	BErase(ps, pos);
 
 }
 
@@ -231,7 +236,7 @@ void EquipmentStatistics(B* ps)
 void EquipmentExit(B* ps, int x)
 {
 	printf("请输入0退出\n");
-	scanf("%d", x);
+	scanf("%d", &x);
 	if (x != 0)
 	{
 		printf("输入错误，请重新输入\n");
