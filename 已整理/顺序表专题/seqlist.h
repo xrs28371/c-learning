@@ -7,9 +7,8 @@
 #include <assert.h>
 #include <limits.h>
 
-/* TODO：自己定义器材结构体与动态顺序表结构体。 */
-/* TODO：自行声明初始化、销毁、检查扩容、指定位置插入与删除接口。 */
-/* 先写清每个参数、返回值及调用前提，再实现。 */
+/* NAME_MAX 和 CATEGRORY 是数组容量，已经包含字符串结束符的位置。 */
+/* 底层函数接收已经初始化的 B，插入范围 0..size，删除范围 0..size-1。 */
 
 
 typedef struct a
@@ -21,7 +20,7 @@ typedef struct a
     int borrowed;
 
 
-}Equipment;// 这里是静态顺序表 存放每个器材 的结构体
+}Equipment;// 一条完整的器材记录，arr[i] 就是这样的一个对象
 
 typedef struct b {
     Equipment* arr;

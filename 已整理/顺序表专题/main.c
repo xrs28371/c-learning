@@ -1,6 +1,9 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "library.h"
+#ifdef _WIN32
+#include <windows.h>
+#endif
 #include<assert.h>
 #include"seqlist.h"
 
@@ -104,8 +107,67 @@ I. 总数量为负、借出/归还数量为 0 或负、未知菜单选项、数�
 
 
 
+/* 原题目保留在上面，下面将已经写好的函数接到菜单。 */
+static void PrintMenu(void)
+{
+    puts("\n实验室器材借用管理");
+    puts("1 新增  2 删除  3 修改  4 按编号查找");
+    puts("5 展示  6 借出  7 归还  8 统计");
+    puts("0 退出");
+}
+
 int main(void)
 {
-   
+#ifdef _WIN32
+    /* 源码和程序输出统一使用 UTF-8，中文名称也按 UTF-8 字节保存。 */
+    UINT originalInputCP = GetConsoleCP();
+    UINT originalOutputCP = GetConsoleOutputCP();
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
+#endif
+
+    B list;
+    Binit(&list);
+    puts("每次提示输入一项，输入后按回车。名称和分类不含空格。");
+
+    int running = 1;
+    while (running)
+    {
+        PrintMenu();
+        int choice;
+        int result = EquipmentReadInt("请选择：", &choice);
+        if (result == -1)
+            break;
+        if (result == 0)
+            continue;
+
+        switch (choice)
+        {
+        case 1: EquipmentAdd(&list); break;
+        case 2: EquipmentDelete(&list, 0); break;
+        case 3: EqiupmentRevise(&list, 0); break;
+        case 4: EquipmentSearch(&list); break;
+        case 5: EqiupmentShow(&list); break;
+        case 6: EqiupmentBorrowed(&list, 0, 0); break;
+        case 7: EquipmentReturn(&list, 0, 0); break;
+        case 8: EquipmentStatistics(&list); break;
+        case 0: running = 0; break;
+        default: puts("未知菜单选项，请输入 0 到 8。"); break;
+        }
+
+        /* 业务函数中途遇到 EOF，也需要结束主循环。 */
+        if (feof(stdin) || ferror(stdin))
+            break;
+    }
+
+    /* 正常退出和 EOF 退出共用一条清理路径，释放一次即可。 */
+    EquipmentExit(&list, 0);
+#ifdef _WIN32
+    fflush(stdout);
+    if (originalInputCP != 0)
+        SetConsoleCP(originalInputCP);
+    if (originalOutputCP != 0)
+        SetConsoleOutputCP(originalOutputCP);
+#endif
     return 0;
 }

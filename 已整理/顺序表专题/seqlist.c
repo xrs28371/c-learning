@@ -1,6 +1,9 @@
 ﻿#include "seqlist.h"
 
-/* TODO：实现底层顺序表操作；这里不提供算法或参考答案。 */
+#include <stdint.h>
+#include <stdio.h>
+
+/* 保留原来的插入、移动、删除算法；Bcheck 负责扩容前的安全检查。 */
 
 //初始化
 void Binit(B* ps)
@@ -28,6 +31,8 @@ void Bcheck(B* ps)
 {
     //先判断是否为空
     assert(ps);
+    assert(ps->size >= 0 && ps->size <= ps->capacity);
+    assert(ps->capacity == 0 ? ps->arr == NULL : ps->arr != NULL);
     if (ps->size == ps->capacity)
     {
         //进行扩容
@@ -35,7 +40,18 @@ void Bcheck(B* ps)
         // 定义一个数据去接受这个 空间
         //增容   给B增容
 
+        /* 先检查再乘二，避免 int 溢出。 */
+        if (ps->capacity > INT_MAX / 2)
+        {
+            fputs("顺序表容量过大，无法继续扩容。\n", stderr);
+            exit(EXIT_FAILURE);
+        }
         int newcapacity = ps->capacity == 0 ? 4 : 2 * ps->capacity;
+        if ((size_t)newcapacity > SIZE_MAX / sizeof(Equipment))
+        {
+            fputs("申请内存的字节数过大。\n", stderr);
+            exit(EXIT_FAILURE);
+        }
         Equipment* tmp = (Equipment*)realloc(ps->arr, newcapacity * sizeof(Equipment));
         if (tmp == NULL)
         {
