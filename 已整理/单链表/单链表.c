@@ -94,5 +94,5 @@ void SLTPrint(SLTNode* phead)
 		printf("%d->", pcur->data);
 		pcur = pcur->next;
 	}
-	printf("\n");
+	printf("NULL\n");
 }
