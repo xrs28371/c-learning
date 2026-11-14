@@ -31,7 +31,16 @@ void SListTesr01()
 void SListTest02()
 {
 	SLTNode* plist = NULL;
-	SLTPushBack(plist, 1);
+	SLPPushBack(&plist, 1);
+	SLPPushBack(&plist, 2);
+	SLPPushBack(&plist, 3);
+	SLPPushBack(&plist, 4);
+	SLPPushBack(&plist, 5);
+	SLPPushBack(&plist, 6);
+	SLPPushBack(&plist, 7);
+	SLPPushBack(&plist, 8);
+	SLPPushBack(&plist, 9);
+	SLTPrint(plist);
 
 }
 

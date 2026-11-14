@@ -112,19 +112,19 @@ SLTNode* SLTBuyNode(SLTDataType x)
 }
 
 //尾插
-void SLPPushBack(SLTNode* phead, SLTDataType x)
+void SLPPushBack(SLTNode** phead, SLTDataType x)
 {
 	//先定义新节点
 	SLTNode* newnode = SLTBuyNode(x);
 	// 空链表和非空
-	if (phead == NULL)
+	if (*phead == NULL)
 	{
-		phead = newnode;
+		*phead = newnode;
 	}
 
 	else {
 		// 先找到尾节点 ， 再和新节点连接
-		SLTNode* ptail = phead;
+		SLTNode* ptail = *phead;
 		while (ptail->next != NULL)
 		{
 			ptail = ptail->next;//往后走
@@ -135,7 +135,7 @@ void SLPPushBack(SLTNode* phead, SLTDataType x)
 }
 
 //头插
-void SLPPushFront(SLTNode* phead, SLTDataType x)
+void SLPPushFront(SLTNode** phead, SLTDataType x)
 {
 
 }
