@@ -28,8 +28,16 @@ void SListTesr01()
 	SLTPrint(plist);
 }
 
+void SListTest02()
+{
+	SLTNode* plist = NULL;
+	SLTPushBack(plist, 1);
+
+}
+
 int main()
 {
-	SListTesr01();
+	SListTest02();
+	//SListTesr01();
 	return 0;
 }

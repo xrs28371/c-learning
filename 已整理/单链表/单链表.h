@@ -14,3 +14,11 @@ typedef struct SListNode
 
 
 void SLTPrint(SLTNode* phead);
+
+//尾插
+void SLPPushBack(SLTNode* phead, SLTDataType x);
+
+//头插
+void SLPPushFront(SLTNode* phead, SLTDataType x);
+
+SLTNode* SLTBuyNode(SLTDataType x);

@@ -96,3 +96,46 @@ void SLTPrint(SLTNode* phead)
 	}
 	printf("NULL\n");
 }
+
+SLTNode* SLTBuyNode(SLTDataType x)
+{
+	SLTNode*newnode= (SLTNode*)malloc(sizeof(SLTNode));
+	if (newnode == NULL)
+	{
+		perror("malloc fail!");
+		exit(1);
+	}
+	newnode->data = x;
+	newnode->next = NULL;
+
+	return newnode;
+}
+
+//尾插
+void SLPPushBack(SLTNode* phead, SLTDataType x)
+{
+	//先定义新节点
+	SLTNode* newnode = SLTBuyNode(x);
+	// 空链表和非空
+	if (phead == NULL)
+	{
+		phead = newnode;
+	}
+
+	else {
+		// 先找到尾节点 ， 再和新节点连接
+		SLTNode* ptail = phead;
+		while (ptail->next != NULL)
+		{
+			ptail = ptail->next;//往后走
+		}
+		//ptail指向就是尾节点
+		ptail->next = newnode;
+	}
+}
+
+//头插
+void SLPPushFront(SLTNode* phead, SLTDataType x)
+{
+
+}
