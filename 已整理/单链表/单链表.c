@@ -1,4 +1,4 @@
-﻿#include<stdio.h>
+﻿#include"单链表.h"
 
 
 
@@ -8,7 +8,8 @@ int removeElement(int* nums, int numsSzie, int val)
 //     数组长度
 {
 	//创建变量
-	int src, dst;
+	int src = 0;
+	int dst = 0;
 	while (src < numsSzie)
 	{
 		if (nums[src] == val)
@@ -85,3 +86,13 @@ void merge(int* nums1, int m, int* nums2, int n)
 //节点有哪些组成部分
 //  数据 和下一个的节点的地址
 
+void SLTPrint(SLTNode* phead)
+{
+	SLTNode* pcur = phead;
+	while (pcur != NULL)
+	{
+		printf("%d->", pcur->data);
+		pcur = pcur->next;
+	}
+	printf("\n");
+}

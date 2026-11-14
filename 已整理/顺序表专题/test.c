@@ -1,163 +1,35 @@
-﻿#include"test.h"
+#include"单链表.h"
 
-
-
-void SLInit(SL* ps)
+void SListTesr01()
 {
-	ps->arr = NULL;
-	ps->size = ps->capacity = 0;
+	//链表是由一个一个节点组成
+	//创建节点
+	SLTNode* node1 = (SLTNode*)malloc(sizeof(SLTNode));
+	node1->data = 1;
 
+	SLTNode* node2 = (SLTNode*)malloc(sizeof(SLTNode));
+	node2->data = 2;
+
+	SLTNode* node3 = (SLTNode*)malloc(sizeof(SLTNode));
+	node3->data = 3;
+
+	SLTNode* node4 = (SLTNode*)malloc(sizeof(SLTNode));
+	node4->data = 4;
+
+	//将4个节点连接
+
+	node1->next = node2;
+	node2->next = node3;
+	node3->next = node4;
+	node4->next = NULL;
+
+	//调用打印
+	SLTNode* plist = node1;//指向第一个节点
+	SLTPrint(plist);
 }
 
-
-
-
-//顺序表的销毁
-void SLDestroy(SL* ps)
+int main()
 {
-	if (ps->arr)
-	{
-		free(ps->arr);
-	}
-	ps->arr = NULL;
-	ps->size = ps->capacity = 0;
+	SListTesr01();
+	return 0;
 }
-
-
-
-void SLCheckCapacity(SL*ps)//检查空间
-{
-	assert(ps);
-	//先判断插入数据前看空间够不够
-	if (ps->capacity == ps->size)
-	{
-		//申请空间
-		//判断capacity 是否为0
-		int newcapacity = ps->capacity == 0 ? 4 : 2 * ps->capacity;
-		SLDataType* tmp = (SLDataType*)realloc(ps->arr, newcapacity * 2 * sizeof(SLDataType));//申请多大的空间？ 一次增容多大呢
-		if (tmp == NULL)
-		{
-			perror("realloc error");
-			exit(1);
-		}
-		ps->arr = tmp;
-		ps->capacity = newcapacity;
-		//通常是成倍数增加 一般2倍 
-	}
-}
-
-
-
-//尾插
-void SLPushBack(SL* ps, SLDataType x)
-{
-	SLCheckCapacity(ps);
-	ps->arr[ps->size] = x;
-	++ps->size;
-
-}
-
-
-
-
-//头插
-void SLPushFront(SL* ps, SLDataType x)
-{
-	SLCheckCapacity(ps);
-	//让顺序表所有数据整体向后移动
-	for (int i = ps->size;i > 0;i--)
-	{
-		ps->arr[i] = ps->arr[i - 1];
-	}
-	ps->arr[0] = x;
-	++ps->size;
-}
-
-//打印顺序表
-/*void SLprint(SL s)
-{
-	for (int i = 0;i < s.size;i++)
-	{
-		printf("%d ", s.arr[i]);
-	}
-	printf("\n");
-}
-*/
-
-
-//尾删  size--
-/*void SLPopBack(SL* ps)
-{
-	assert(ps);
-	assert(ps->size);
-	//顺序表不能为空
-	ps->arr[ps->size - 1] = -1;
-	--ps->size;
-}
-*/
-
-
-//头删
-void SLPopFront(SL* ps)
-{
-	assert(ps);
-	assert(ps->size);
-
-	//数据整体向前挪动一位
-	for (int i = 0;i < ps->size - 1;i++)
-	{
-		ps->arr[i] = ps->arr[i + 1];
-	}
-	--ps->size;		
-}
-
-
-//指定位置之前插入数据
-// pos必须是大于等于0 小于size
-void SLInsert(SL* ps, int pos, SLDataType x)
-//  顺序表  位置  插入的数据
-{
-	assert(ps);
-	assert(pos >= 0 && pos <= ps->size);
-	SLCheckCapacity(ps);
-	for (int i = ps->size;i > pos;i--)
-	{
-		ps->arr[i] = ps->arr[i - 1];//arr[pos+1]=arr[pos]
-	}
-	ps->arr[pos] = x;
-	ps->size++;
-
-}
-
-
-//删除指定位置的数据
-void SLErase(SL* ps, int pos)
-{
-	assert(ps);
-	assert(pos >= 0 && pos < ps->size);
-	for (int i = pos;i<ps->size-1;i++)
-	{
-		ps->arr[i] = ps->arr[i + 1];
-	}
-	ps->size--;
-}
-
-
-
-
-//顺序表的查找
-/*
-int SLFind(SL*ps,SLDataType x)
-{
-     assert(ps);
-	 for (int i=0;i<ps->size;i++)
-	 {
-	      if(ps->arr[i] == x)
-		  {
-		      // 找到啦
-			  return i;
-		   }
-	  }
-	  //没有找到
-	  return -1;
-*/
