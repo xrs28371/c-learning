@@ -114,6 +114,7 @@ SLTNode* SLTBuyNode(SLTDataType x)
 //尾插
 void SLPPushBack(SLTNode** phead, SLTDataType x)
 {
+	assert(phead);
 	//先定义新节点
 	SLTNode* newnode = SLTBuyNode(x);
 	// 空链表和非空
@@ -136,6 +137,43 @@ void SLPPushBack(SLTNode** phead, SLTDataType x)
 
 //头插
 void SLPPushFront(SLTNode** phead, SLTDataType x)
+{
+	assert(phead);
+	//先定义新节点
+	SLTNode* newnode = SLTBuyNode(x);
+	// newnode *phead
+	newnode->next = *phead;
+	*phead = newnode;
+}
+
+//尾删
+void SLTPopBack(SLTNode** phead)
+{
+	assert(phead);
+	assert(*phead);
+	// 一个和多个
+	if ((*phead)->next == NULL)
+	{
+		free(*phead);
+		*phead = NULL;
+	}
+	else {
+
+		SLTNode* prev = *phead;
+		SLTNode* ptail = *phead;
+		while (ptail->next)
+		{
+			prev = ptail;
+			ptail = ptail->next;
+		}
+		free(ptail);
+		ptail = NULL;
+		prev->next = NULL;
+	}
+}
+
+//头删
+void SLTPopFront(SLTNode** phead)
 {
 
 }

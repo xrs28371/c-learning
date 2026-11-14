@@ -42,6 +42,25 @@ void SListTest02()
 	SLPPushBack(&plist, 9);
 	SLTPrint(plist);
 
+	//头插
+	SLPPushFront(&plist, 10);
+	SLTPrint(plist);
+	SLPPushFront(&plist, 10);
+	SLTPrint(plist);
+	SLPPushFront(&plist, 10);
+	SLTPrint(plist);
+
+
+	//尾删
+	SLTPopBack(&plist);
+	SLTPrint(plist);
+	SLTPopBack(&plist);
+	SLTPrint(plist);
+	SLTPopBack(&plist);
+	SLTPrint(plist);
+	SLTPopBack(&plist);
+	SLTPrint(plist);
+
 }
 
 int main()

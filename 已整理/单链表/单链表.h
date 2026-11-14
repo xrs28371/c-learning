@@ -22,3 +22,9 @@ void SLPPushBack(SLTNode** pphead, SLTDataType x);
 void SLPPushFront(SLTNode** pphead, SLTDataType x);
 
 SLTNode* SLTBuyNode(SLTDataType x);
+
+//尾删
+void SLTPopBack(SLTNode** phead);
+
+//头删
+void SLTPopFront(SLTNode** phead);
